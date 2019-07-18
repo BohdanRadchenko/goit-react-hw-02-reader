@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import Reader from './components/Reader';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Reader />, document.getElementById('root'));

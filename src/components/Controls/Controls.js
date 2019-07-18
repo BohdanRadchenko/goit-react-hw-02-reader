@@ -1,21 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './Controls.module.css';
 
-class Controls extends Component {
-  state = {};
-
-  render() {
-    return (
-      <section className={styles.controls}>
-        <button type="button" className={styles.buttonPrev} name="buttonPrev">
-          Назад
-        </button>
-        <button type="button" className={styles.buttonNext} name="buttonNext">
-          Вперед
-        </button>
-      </section>
-    );
-  }
-}
+const Controls = ({ hendleDecrement, hendleIncrement }) => {
+  return (
+    <section className={styles.controls}>
+      <button
+        type="button"
+        className={styles.buttonPrev}
+        name="buttonPrev"
+        onClick={hendleDecrement}
+      >
+        Назад
+      </button>
+      <button
+        type="button"
+        className={styles.buttonNext}
+        name="buttonNext"
+        onClick={hendleIncrement}
+      >
+        Вперед
+      </button>
+    </section>
+  );
+};
 
 export default Controls;
