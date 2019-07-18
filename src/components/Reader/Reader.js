@@ -5,17 +5,15 @@ import Publication from '../Publication/Publication';
 import Counter from '../Counter/Counter';
 import Controls from '../Controls/Controls';
 
-class Reader extends Component {
-  state = {};
-  render() {
-    return (
-      <div className={styles.reader}>
-        <Publication />
-        <Counter />
-        <Controls />
-      </div>
-    );
-  }
-}
+const Reader = ({ items, id, indexCount, getId }) => {
+  const findId = items.find(el => el.id === id);
+  return (
+    <div className={styles.reader}>
+      <Publication {...findId} />
+      <Counter itemsLength={items.length} indexCount={indexCount} />
+      <Controls />
+    </div>
+  );
+};
 
 export default Reader;

@@ -7,10 +7,10 @@ class Controls extends Component {
   render() {
     return (
       <section className={styles.controls}>
-        <button type="button" className={styles.buttonPrev}>
+        <button type="button" className={styles.buttonPrev} name="buttonPrev">
           Назад
         </button>
-        <button type="button" className={styles.buttonNext}>
+        <button type="button" className={styles.buttonNext} name="buttonNext">
           Вперед
         </button>
       </section>

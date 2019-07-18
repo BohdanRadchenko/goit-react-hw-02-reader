@@ -5,7 +5,7 @@ import publications from '../assets/publications.json';
 
 class App extends Component {
   state = {
-    indexCount: 0,
+    id: '4db49f19-9aa2-4faf-9862-a97efaefd21c',
   };
 
   getIndex(i) {
@@ -16,10 +16,10 @@ class App extends Component {
   }
 
   render() {
-    const { indexCount } = this.state;
+    const { id } = this.state;
     return (
       <div>
-        <Reader />
+        <Reader items={publications} id={id} />
       </div>
     );
   }
