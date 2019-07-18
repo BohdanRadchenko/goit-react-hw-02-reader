@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './Reader.module.css';
+// import styles from './Reader.module.css';
 import publications from '../assets/publications.json';
 import Publication from './Publication/Publication';
 import Counter from './Counter/Counter';
@@ -46,14 +46,14 @@ class Reader extends Component {
   };
 
   render() {
-    const { indexValue, items, disabledDown, disabledUp } = this.state;
+    const { indexValue, items } = this.state;
     return (
       <>
         <Publication
           title={items[indexValue - 1].title}
           text={items[indexValue - 1].text}
         />
-        <Counter itemsLength={items.length} indexCount={indexValue} />
+        <Counter itemsLength={items.length} indexValue={indexValue} />
         <Controls
           indexValue={indexValue}
           itemsLength={items.length}
