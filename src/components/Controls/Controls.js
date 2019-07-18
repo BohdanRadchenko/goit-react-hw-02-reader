@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Controls.module.css';
 
 const Controls = ({
@@ -11,7 +12,7 @@ const Controls = ({
     <section className={styles.controls}>
       <button
         type="button"
-        className={styles.buttonPrev}
+        className={styles.button}
         name="buttonPrev"
         onClick={hendleDecrement}
         disabled={indexValue === 1}
@@ -20,7 +21,7 @@ const Controls = ({
       </button>
       <button
         type="button"
-        className={styles.buttonNext}
+        className={styles.button}
         name="buttonNext"
         onClick={hendleIncrement}
         disabled={indexValue === itemsLength}
@@ -29,6 +30,13 @@ const Controls = ({
       </button>
     </section>
   );
+};
+
+Controls.propTypes = {
+  hendleDecrement: PropTypes.func.isRequired,
+  hendleIncrement: PropTypes.func.isRequired,
+  indexValue: PropTypes.number.isRequired,
+  itemsLength: PropTypes.number.isRequired,
 };
 
 export default Controls;

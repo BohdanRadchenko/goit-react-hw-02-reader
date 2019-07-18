@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
-// import styles from './Reader.module.css';
-import publications from '../assets/publications.json';
+import PropTypes from 'prop-types';
+import styles from './Reader.module.css';
 import Publication from './Publication/Publication';
 import Counter from './Counter/Counter';
 import Controls from './Controls/Controls';
 
 class Reader extends Component {
+  static propTypes = {
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+      }).isRequired,
+    ).isRequired,
+  };
+
   state = {
     indexValue: 1,
-    items: publications,
+    items: this.props.items,
   };
 
   componentDidMount() {
@@ -37,8 +47,8 @@ class Reader extends Component {
   };
 
   hendleIncrement = () => {
-    const { indexValue } = this.state;
-    if (indexValue < publications.length) {
+    const { indexValue, items } = this.state;
+    if (indexValue < items.length) {
       this.setState(state => ({
         indexValue: state.indexValue + 1,
       }));
@@ -47,19 +57,31 @@ class Reader extends Component {
 
   render() {
     const { indexValue, items } = this.state;
+    const emptyData = items.length === 0;
+
     return (
       <>
-        <Publication
-          title={items[indexValue - 1].title}
-          text={items[indexValue - 1].text}
-        />
-        <Counter itemsLength={items.length} indexValue={indexValue} />
-        <Controls
-          indexValue={indexValue}
-          itemsLength={items.length}
-          hendleIncrement={this.hendleIncrement}
-          hendleDecrement={this.hendleDecrement}
-        />
+        {!emptyData && (
+          <div className={styles.reader}>
+            <Publication
+              title={items[indexValue - 1].title}
+              text={items[indexValue - 1].text}
+            />
+            <Counter itemsLength={items.length} indexValue={indexValue} />
+            <Controls
+              className={styles.controls}
+              indexValue={indexValue}
+              itemsLength={items.length}
+              hendleIncrement={this.hendleIncrement}
+              hendleDecrement={this.hendleDecrement}
+            />
+          </div>
+        )}
+        {emptyData && (
+          <div>
+            <p>Empty data base</p>
+          </div>
+        )}
       </>
     );
   }
