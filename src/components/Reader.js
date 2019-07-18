@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
 import styles from './Reader.module.css';
 import publications from '../assets/publications.json';
@@ -6,9 +5,8 @@ import Publication from './Publication/Publication';
 import Counter from './Counter/Counter';
 import Controls from './Controls/Controls';
 
-class App extends Component {
+class Reader extends Component {
   state = {
-    id: '4db49f19-9aa2-4faf-9862-a97efaefd21c',
     indexValue: 1,
     items: publications,
   };
@@ -48,8 +46,7 @@ class App extends Component {
   };
 
   render() {
-    const { id, indexValue, items } = this.state;
-    console.log(indexValue);
+    const { indexValue, items, disabledDown, disabledUp } = this.state;
     return (
       <>
         <Publication
@@ -58,6 +55,8 @@ class App extends Component {
         />
         <Counter itemsLength={items.length} indexCount={indexValue} />
         <Controls
+          indexValue={indexValue}
+          itemsLength={items.length}
           hendleIncrement={this.hendleIncrement}
           hendleDecrement={this.hendleDecrement}
         />
@@ -66,4 +65,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Reader;
